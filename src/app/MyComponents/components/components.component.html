@@ -1,0 +1,61 @@
+<div class="container-fluid">
+
+    <div class="row justify-content-center align-items-center g-2">
+
+        <div class="card border-secondary">
+            <div class="card-body">
+                <h4 class="card-title">Parent to child</h4>
+                <p class="card-text">
+                    <input [(ngModel)]="msg" type="text">
+
+                    <br>
+                    <button (click)="btnSendClick()" type="button" class="btn btn-primary m-2">
+                        Send message to Child
+                    </button>
+                </p>
+
+                <hr>
+                <app-child infoFromParent="{{messageToChild}}"></app-child>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <hr>
+
+    <div class="row justify-content-center align-items-center g-2">
+
+        <div class="card border-secondary">
+            <div class="card-body">
+                <h4 class="card-title">Child To parent</h4>
+                <h3>{{messageFromChild}}</h3>
+
+                <hr>
+                <app-child-output (childMessage)="getMessage($event)"></app-child-output>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <hr>
+
+    <div class="row justify-content-center align-items-center g-2">
+        <div class="col-6">
+            <app-component1></app-component1>
+        </div>
+
+        <div class="col-6">
+            <app-component2></app-component2>
+        </div>
+    </div>
+
+
+
+
+</div>

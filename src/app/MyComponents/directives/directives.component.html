@@ -1,0 +1,76 @@
+<button (click)="sortCountries()" type="button" class="btn btn-primary">
+    Sort list of countries
+</button>
+
+
+
+<div class="card border-secondary m-3">
+    <div class="card-body">
+        <h4 class="card-title">{{info}}</h4>
+
+        <ul>
+            @for(c of countries; track $index){
+            <li>{{c.name}}, {{c.capital}},{{c.area}} km<sup>2</sup></li>
+            }
+        </ul>
+
+    </div>
+</div>
+
+<hr>
+<div class="card border-secondary m-3">
+    <div class="card-body">
+        <h4 class="card-title">{{info}} conditional statement</h4>
+
+        <ul>
+            @for(c of countries; track $index){
+
+            <li>
+                @if(c.area>600000){
+                <div class="large">
+                    {{c.name}}, {{c.capital}},{{c.area}} km<sup>2</sup>
+                </div>
+                }
+                @else{
+                <div class="small">
+                    {{c.name}}, {{c.capital}},{{c.area}} km<sup>2</sup>
+                </div>
+                }
+
+            </li>
+            }
+        </ul>
+
+    </div>
+</div>
+
+<hr>
+
+<div class="card border-secondary m-3">
+    <div class="card-body">
+        <h4 class="card-title">{{info}} table view</h4>
+
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Capital</th>
+                <th>Area km<sup>2</sup></th>
+            </thead>
+
+            <tbody>
+                @for(c of countries; track $index){
+                <tr>
+                    <td [ngStyle]="{'background-color':getColor($index)}">{{$index+1}}</td>
+                    <td [ngStyle]="{'background-color':getColor($index)}"> {{c.name}}</td>
+                    <td [ngStyle]="{'background-color':getColor($index)}"> {{c.capital}}</td>
+                    <td [ngStyle]="{'background-color':getColor($index)}"> {{c.area}}</td>
+                </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
